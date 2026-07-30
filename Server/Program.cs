@@ -20,14 +20,17 @@ var configuration = builder.Configuration;
 services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
 services.Configure<AuthorizationOptions>(configuration.GetSection(nameof(AuthorizationOptions)));
 
-services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
+
+var corsOrigins =
+    configuration.GetSection("Cors:Origins").Get<string[]>()
+    ?? throw new InvalidOperationException("Configuration string 'Cors:Origins' not found.");
 
 services.AddCors(option =>
 {
     option.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://localhost:3000/");
+        policy.WithOrigins(corsOrigins);
         policy.AllowCredentials();
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
@@ -36,11 +39,11 @@ services.AddCors(option =>
 
 // DI Containers
 
-// Repositoties
+// Repositories
 services.AddScoped<IRoleRepository, RoleRepository>();
 services.AddScoped<IUserRepository, UserRepository>();
 
-// Services
+// Application services
 services.AddScoped<IUserService, UserService>();
 
 // Auth
