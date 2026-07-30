@@ -1,23 +1,19 @@
 using Core.Exceptions;
+using Core.Structs;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Server.Controllers
+namespace Server.Controllers;
+
+public abstract class BaseController : ControllerBase
 {
-    public abstract class BaseController : ControllerBase
+    protected Guid GetUserId()
     {
-        protected string GetTokenFromHeaders()
-        {
-            if (!Request.Headers.TryGetValue("Authorization", out var header))
-                throw new UnauthorizedException();
+        string userIdString =
+            User.FindFirst(CustomClaims.UserId)?.Value ?? throw new UnauthorizedException();
 
-            var parts = header.ToString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (!Guid.TryParse(userIdString, out var userId))
+            throw new UnauthorizedException();
 
-            return (
-                parts.Length == 2 && parts[0].Equals("Bearer", StringComparison.OrdinalIgnoreCase)
-            )
-                ? parts[1]
-                : throw new UnauthorizedException();
-        }
+        return userId;
     }
 }
