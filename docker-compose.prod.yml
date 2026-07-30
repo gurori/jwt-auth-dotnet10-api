@@ -1,0 +1,13 @@
+services:
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTPS_PORTS=8080
+    volumes:
+      - ./:/src
+
+  db:
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_password
