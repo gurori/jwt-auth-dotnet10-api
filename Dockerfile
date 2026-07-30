@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build-env
 WORKDIR /app
 
 COPY ["./Server/Server.csproj", "./Server/"]
@@ -12,7 +12,7 @@ RUN dotnet restore "./Server/Server.csproj"
 COPY . .
 RUN dotnet publish "./Server/Server.csproj" -c Release -o out /p:UseAppHost=false 
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
