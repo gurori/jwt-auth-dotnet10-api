@@ -9,8 +9,8 @@ using Infrastructure.Auth;
 using Infrastructure.Mapping;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
-using Server.Controllers;
 using Server.Extensions;
+using Server.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
