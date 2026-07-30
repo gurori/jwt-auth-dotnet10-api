@@ -1,22 +1,22 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build-env
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
 
-COPY ["./Server/Server.csproj", "./Server/"]
-COPY ["./Core/Core.csproj", "./Core/"]
-COPY ["./Application/Application.csproj", "./Application/"]
-COPY ["./DataAccess/DataAccess.csproj", "./DataAccess/"]
-COPY ["./Infrastructure/Infrastructure.csproj", "./Infrastructure/"]
+COPY Application/Application.csproj Application/
+COPY Core/Core.csproj Core/
+COPY DataAccess/DataAccess.csproj DataAccess/
+COPY Infrastructure/Infrastructure.csproj Infrastructure/
+COPY Server/Server.csproj Server/
 
-RUN dotnet restore "./Server/Server.csproj"
+
+RUN dotnet restore Server/Server.csproj
 
 COPY . .
-RUN dotnet publish "./Server/Server.csproj" -c Release -o out /p:UseAppHost=false 
+WORKDIR /src/Server
+RUN dotnet publish -c Release --no-restore -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
-COPY --from=build-env /app/out .
 
-EXPOSE 8080
+COPY --from=build /app/ ./
 
-ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENTRYPOINT ["dotnet", "Server.dll"]
