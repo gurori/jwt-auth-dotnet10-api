@@ -1,24 +1,31 @@
 # Build output
-bin/
-obj/
+**/bin/
+**/obj/
 
-# User-specific files
+# IDE
 .vscode/
-*.user
-*.suo
+.vs/
+.idea/
 
 # Git
 .git/
 .gitignore
 
+# Documentation
+README.md
+
 # Logs
 *.log
 logs/
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-# Environment files (optional, if you don't want to include them in image)
+# Environment
 .env
-.env.local
+.env.*
+
+# Docker
+Dockerfile
+docker-compose*.yml
