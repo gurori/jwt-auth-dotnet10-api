@@ -1,7 +1,6 @@
 using Application.Services;
 using Core.Interfaces.Auth;
 using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
 using DataAccess;
 using Infrastructure.Repositories;
 using Infrastructure.Auth;
@@ -11,6 +10,7 @@ using Server.Extensions;
 using Server.Filters;
 using DataAccess.DbContexts;
 using Infrastructure.Auth.Jwt;
+using Application.Interfaces.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

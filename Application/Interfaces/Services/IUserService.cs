@@ -1,6 +1,6 @@
 using Core.Models.Response;
 
-namespace Core.Interfaces.Services;
+namespace Application.Interfaces.Services;
 
 public interface IUserService
 {

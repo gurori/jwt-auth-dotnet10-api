@@ -1,9 +1,9 @@
+using Application.Interfaces.Services;
 using AutoMapper;
 using Core.Entities;
 using Core.Exceptions;
 using Core.Interfaces.Auth;
 using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
 using Core.Models.Response;
 
 namespace Application.Services;
