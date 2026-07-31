@@ -11,7 +11,12 @@ public static class ApiExtensions
         IConfiguration configuration
     )
     {
-        var jwtOptions = configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>();
+        var jwtOptions =
+            configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>()
+            ?? throw new InvalidOperationException(
+                $"Configuration '{nameof(JwtOptions)}' not found."
+            );
+
         var scheme = JwtBearerDefaults.AuthenticationScheme;
 
         services
@@ -29,8 +34,20 @@ public static class ApiExtensions
                     options.SaveToken = true;
 
                     options.TokenValidationParameters = JwtParameters.GetTokenValidationParameters(
-                        jwtOptions!
+                        jwtOptions
                     );
+
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            context.Token = context.HttpContext.Request.Cookies[
+                                jwtOptions.JwtCookieName
+                            ];
+
+                            return Task.CompletedTask;
+                        },
+                    };
                 }
             );
 

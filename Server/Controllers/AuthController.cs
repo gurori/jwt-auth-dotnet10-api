@@ -1,14 +1,18 @@
 using Application.Interfaces.Services;
 using Core.Models.Users;
+using Infastructure.Auth;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public sealed class AuthController(IUserService userService) : BaseController
+    public sealed class AuthController(IUserService userService, IOptions<JwtOptions> jwtOptions)
+        : BaseController
     {
         private readonly IUserService _userService = userService;
+        private readonly JwtOptions _jwtOptions = jwtOptions.Value;
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterRequest request)
@@ -27,8 +31,24 @@ namespace Server.Controllers
         public async Task<IActionResult> Login(UserLoginRequest request)
         {
             string token = await _userService.LoginAsync(request.Email, request.Password);
+            SetAuthCookie(token);
 
-            return Ok(token);
+            return Ok();
+        }
+
+        private void SetAuthCookie(string token)
+        {
+            Response.Cookies.Append(
+                _jwtOptions.JwtCookieName,
+                token,
+                new CookieOptions
+                {
+                    SameSite = SameSiteMode.None,
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = DateTime.UtcNow.AddDays(_jwtOptions.ExpiresDays),
+                }
+            );
         }
     }
 }
