@@ -1,20 +1,19 @@
 ﻿using Core.Enums;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Infastructure.Auth
+namespace Infrastructure.Auth.Permissions;
+
+public class PermissionRequirement : IAuthorizationRequirement
 {
-    public class PermissionRequirement : IAuthorizationRequirement
+    public Permission Permission { get; private set; }
+
+    public PermissionRequirement(Permission permission)
     {
-        public Permission Permission { get; private set; }
+        Permission = permission;
+    }
 
-        public PermissionRequirement(Permission permission)
-        {
-            Permission = permission;
-        }
-
-        public PermissionRequirement(string permissionString)
-        {
-            Permission = Enum.Parse<Permission>(permissionString);
-        }
+    public PermissionRequirement(string permissionString)
+    {
+        Permission = Enum.Parse<Permission>(permissionString);
     }
 }

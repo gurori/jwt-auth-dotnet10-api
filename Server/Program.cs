@@ -4,13 +4,13 @@ using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
 using DataAccess;
 using Infrastructure.Repositories;
-using Infastructure.Auth;
 using Infrastructure.Auth;
 using Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Server.Extensions;
 using Server.Filters;
 using DataAccess.DbContexts;
+using Infrastructure.Auth.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 

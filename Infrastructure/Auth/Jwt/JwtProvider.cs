@@ -7,7 +7,7 @@ using Core.Structs;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Infastructure.Auth;
+namespace Infrastructure.Auth.Jwt;
 
 public class JwtProvider(IOptions<JwtOptions> options, IRoleRepository roleRepository)
     : IJwtProvider
