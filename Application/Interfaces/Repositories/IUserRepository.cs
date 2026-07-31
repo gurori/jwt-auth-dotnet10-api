@@ -13,10 +13,10 @@ namespace Application.Interfaces.Repositories
 
         public Task<UserEntity?> GetByEmailAsync(string email);
 
-        public Task<UserEntity?> GetByIdAsync(string id);
-        public Task UpdateAsync(string id, string name);
-        public Task<string?> GetRoleByIdAsync(string id);
-        public Task<IEnumerable<UserEntity>> GetManyByIdAsync(IEnumerable<string> ids);
-        public Task DeleteByIdAsync(string id);
+        public Task<UserEntity?> GetByIdAsync(Guid id);
+        public Task UpdateAsync(Guid id, string name);
+        public Task<string?> GetRoleByIdAsync(Guid id);
+        public Task<IEnumerable<UserEntity>> GetManyByIdAsync(IEnumerable<Guid> ids);
+        public Task DeleteByIdAsync(Guid id);
     }
 }

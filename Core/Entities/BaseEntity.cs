@@ -1,7 +1,6 @@
-namespace Core.Entities
+namespace Core.Entities;
+
+public abstract class BaseEntity
 {
-    public abstract class BaseEntity
-    {
-        public string Id { get; set; } = Ulid.NewUlid().ToString();
-    }
+    public Guid Id { get; set; } = Guid.CreateVersion7();
 }
