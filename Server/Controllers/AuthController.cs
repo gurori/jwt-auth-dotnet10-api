@@ -1,6 +1,6 @@
-using Application.Interfaces.Services;
+using Core.Interfaces.Services;
 using Core.Models.Users;
-using Infastructure.Auth;
+using Infrastructure.Auth.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
