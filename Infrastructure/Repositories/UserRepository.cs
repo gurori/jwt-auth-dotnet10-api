@@ -1,8 +1,9 @@
 using Core.Entities;
 using Core.Interfaces.Repositories;
+using DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Repositories;
+namespace Infrastructure.Repositories;
 
 public sealed class UserRepository(AppDbContext context) : IUserRepository
 {

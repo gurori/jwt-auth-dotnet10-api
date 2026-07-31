@@ -3,7 +3,7 @@ using Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace DataAccess
+namespace DataAccess.DbContexts
 {
     public class AppDbContext(
         DbContextOptions<AppDbContext> options,
