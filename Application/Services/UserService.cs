@@ -4,7 +4,7 @@ using Core.Entities;
 using Core.Exceptions;
 using Core.Interfaces.Auth;
 using Core.Interfaces.Repositories;
-using Core.Models.Response;
+using Core.Models.Users;
 
 namespace Application.Services;
 
