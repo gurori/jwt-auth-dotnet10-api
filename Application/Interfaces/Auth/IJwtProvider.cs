@@ -1,10 +1,6 @@
-using Microsoft.IdentityModel.Tokens;
+namespace Application.Interfaces.Auth;
 
-namespace Application.Interfaces.Auth
+public interface IJwtProvider
 {
-    public interface IJwtProvider
-    {
-        public Task<string> GenerateTokenAsync(string id, string role);
-        public Task<TokenValidationResult> ValidateTokenAsync(string token);
-    }
+    public Task<string> GenerateTokenAsync(Guid id, string role);
 }
