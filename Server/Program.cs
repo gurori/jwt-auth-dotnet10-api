@@ -7,7 +7,6 @@ using DataAccess.Repositories;
 using Infastructure.Auth;
 using Infrastructure.Auth;
 using Infrastructure.Mapping;
-using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 using Server.Extensions;
 using Server.Filters;
