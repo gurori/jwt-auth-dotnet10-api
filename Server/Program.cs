@@ -1,7 +1,7 @@
-using Application.Interfaces.Auth;
-using Application.Interfaces.Repositories;
-using Application.Interfaces.Services;
 using Application.Services;
+using Core.Interfaces.Auth;
+using Core.Interfaces.Repositories;
+using Core.Interfaces.Services;
 using DataAccess;
 using DataAccess.Repositories;
 using Infastructure.Auth;

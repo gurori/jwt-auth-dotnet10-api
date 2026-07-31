@@ -1,5 +1,5 @@
-using Application.Interfaces.Repositories;
 using Core.Entities;
+using Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;

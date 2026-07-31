@@ -1,8 +1,8 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Application.Interfaces.Auth;
-using Application.Interfaces.Repositories;
+using Core.Interfaces.Auth;
+using Core.Interfaces.Repositories;
 using Core.Structs;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

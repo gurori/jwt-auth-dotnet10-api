@@ -1,4 +1,4 @@
-namespace Application.Interfaces.Auth;
+namespace Core.Interfaces.Auth;
 
 public interface IJwtProvider
 {

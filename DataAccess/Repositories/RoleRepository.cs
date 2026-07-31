@@ -1,4 +1,4 @@
-using Application.Interfaces.Repositories;
+using Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
