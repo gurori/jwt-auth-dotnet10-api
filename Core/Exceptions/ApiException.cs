@@ -5,12 +5,13 @@
         public int StatusCode { get; } = statusCode;
     }
 
-    public sealed class NotFoundException(string message, int statusCode = 404)
-        : ApiException(message, statusCode) { }
+    public sealed class NotFoundException(string message) : ApiException(message, 404) { }
 
-    public sealed class ConflictException(string message, int statusCode = 409)
-        : ApiException(message, statusCode) { }
+    public sealed class ConflictException(string message) : ApiException(message, 409) { }
 
-    public sealed class UnauthorizedException(string message = "Unauthorized", int statusCode = 401)
-        : ApiException(message, statusCode) { }
+    public sealed class UnauthorizedException(string message = "Unauthorized")
+        : ApiException(message, 401) { }
+
+    public sealed class ForbiddenException(string message = "Forbidden")
+        : ApiException(message, 403) { }
 }
