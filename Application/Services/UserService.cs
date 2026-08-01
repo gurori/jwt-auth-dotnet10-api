@@ -58,15 +58,6 @@ public class UserService(
         await _userRepository.UpdateAsync(id, name);
     }
 
-    public async Task<string> GetRoleByIdAsync(Guid id)
-    {
-        string role =
-            await _userRepository.GetRoleByIdAsync(id)
-            ?? throw new NotFoundException("Пользователь не найден");
-
-        return role;
-    }
-
     public async Task DeleteAsync(Guid id)
     {
         await _userRepository.DeleteByIdAsync(id);

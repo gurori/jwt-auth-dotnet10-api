@@ -9,6 +9,5 @@ public interface IUserService
     public Task<UserResponse> GetAsync(Guid id);
     public Task<IEnumerable<UserResponse>> GetAsync(IEnumerable<Guid> ids);
     public Task UpdateAsync(Guid id, string name);
-    public Task<string> GetRoleByIdAsync(Guid id);
     public Task DeleteAsync(Guid id);
 }
