@@ -1,5 +1,7 @@
 using Application.Interfaces.Services;
+using Core.Enums;
 using Core.Models.Users;
+using Infrastructure.Auth.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +21,7 @@ public sealed class UserController(IUserService userService) : BaseController
     }
 
     [HttpGet]
+    [HasPermission(Permission.GetUsers)]
     public async Task<IActionResult> Get([FromQuery] IEnumerable<Guid> ids)
     {
         var users = await _userService.GetAsync(ids);
