@@ -11,6 +11,6 @@
     public sealed class ConflictException(string message, int statusCode = 409)
         : ApiException(message, statusCode) { }
 
-    public sealed class UnauthorizedException(string message = "Проблемы с токеном", int statusCode = 401)
+    public sealed class UnauthorizedException(string message = "Unauthorized", int statusCode = 401)
         : ApiException(message, statusCode) { }
 }
