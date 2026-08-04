@@ -196,10 +196,10 @@ http://localhost:8080/swagger
 
 ## Configuration
 
-Configure the application using [appsettings.json](Server/appsettings.json) and [appsettings.Development.json](Server/appsettings.Development.json) for development.
+Configure the application using [appsettings.json](Server/appsettings.json) and [appsettings.Development.json](Server/appsettings.Development.json).
 
 > [!NOTE]
-> Replace all placeholder values (such as `your-frontend.com` and `very-secret-key-...`) with your own configuration before running the application.
+> Replace the example configuration values (such as JWT secrets, CORS origins, connection strings, and database credentials) with your own before running the application.
 
 Example:
 
@@ -247,20 +247,30 @@ Example:
 
 ## Docker
 
-The project includes two Docker Compose files:
+The project includes three Docker Compose files:
 
-- **docker-compose.yml** – base configuration for running the application and its dependencies.
-- **docker-compose.dev.yml** – development overrides (for example, source code mounting, development environment variables, and hot reload).
+- **docker-compose.yml** – base configuration shared across all environments.
+- **docker-compose.dev.yml** – development overrides (source code mounting, development environment variables, hot reload, etc.).
+- **docker-compose.prod.yml** – production overrides with production-specific configuration.
 
-Run both files together during development:
+### Development
+
+Run the application in the development environment:
 
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-> [!TIP]
-> Review both Docker Compose files and update service names, ports, environment variables, and volume mappings to match your local environment before starting the application.
+### Production
+
+Run the application in the production environment:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 ```
+
+> [!TIP]
+> Before running the application, review the Docker Compose files and update ports, environment variables, volume mappings, database credentials, and other settings to match your environment.
 
 ## Goals
 
