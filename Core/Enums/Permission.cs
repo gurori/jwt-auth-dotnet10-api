@@ -5,6 +5,6 @@ namespace Core.Enums
         GetUsers = 1,
         CreatePosts,
         DeletePosts,
-        UpadtePosts,
+        UpdatePosts,
     }
 }
