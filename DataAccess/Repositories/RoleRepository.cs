@@ -2,7 +2,7 @@ using Core.Interfaces.Repositories;
 using DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories;
+namespace DataAccess.Repositories;
 
 public sealed class RoleRepository(AppDbContext context) : IRoleRepository
 {

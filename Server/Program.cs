@@ -2,7 +2,6 @@ using Application.Services;
 using Core.Interfaces.Auth;
 using Core.Interfaces.Repositories;
 using DataAccess;
-using Infrastructure.Repositories;
 using Infrastructure.Auth;
 using Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +10,7 @@ using Server.Filters;
 using DataAccess.DbContexts;
 using Infrastructure.Auth.Jwt;
 using Application.Interfaces.Services;
+using DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -3,7 +3,7 @@ using Core.Interfaces.Repositories;
 using DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories;
+namespace DataAccess.Repositories;
 
 public sealed class UserRepository(AppDbContext context) : IUserRepository
 {
