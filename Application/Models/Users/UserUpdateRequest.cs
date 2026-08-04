@@ -1,3 +1,3 @@
-namespace Core.Models.Users;
+namespace Application.Models.Users;
 
 public sealed record UserUpdateRequest(string Name);

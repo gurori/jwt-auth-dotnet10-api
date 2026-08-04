@@ -1,4 +1,4 @@
-using Core.Models.Users;
+using Application.Models.Users;
 
 namespace Application.Interfaces.Services;
 

@@ -1,6 +1,6 @@
 using Application.Interfaces.Services;
+using Application.Models.Users;
 using Core.Enums;
-using Core.Models.Users;
 using Infrastructure.Auth.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

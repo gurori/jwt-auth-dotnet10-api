@@ -1,6 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Models.Users;
+using AutoMapper;
 using Core.Entities;
-using Core.Models.Users;
 
 namespace Infrastructure.Mapping
 {
