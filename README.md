@@ -30,9 +30,7 @@
 - ✅ Swagger / OpenAPI
 - ✅ Global Exception Handling
 - ✅ Dependency Injection
-- ✅ Configuration via Options Patternn
-
----
+- ✅ Configuration via Options Pattern
 
 ## Project Structure
 
@@ -53,12 +51,12 @@ src/
 ├── DataAccess/
 │   ├── Configurations/
 │   ├── DbContexts/
+│   ├── Repositories/
 │   └── AuthorizationOptions.cs
 │
 ├── Infrastructure/
 │   ├── Auth/
-│   ├── Mapping/
-│   └── Repositories/
+│   └── Mapping/
 │
 └── Server/
     ├── Controllers/
@@ -66,8 +64,6 @@ src/
     ├── Filters/
     └── Program.cs
 ```
-
----
 
 ## Architecture
 
@@ -84,8 +80,6 @@ Contains:
 
 No dependencies.
 
----
-
 ### Application
 
 Contains:
@@ -96,19 +90,16 @@ Contains:
 
 Depends only on **Core**.
 
----
-
 ### DataAccess
 
 Contains:
 
 * EF Core
 * DbContext
+* Repository implementations
 * Migrations
 
 Depends only on **Core**.
-
----
 
 ### Infrastructure
 
@@ -118,11 +109,8 @@ Contains:
 * Authorization
 * Password hashing
 * External services
-* Repository implementations
 
-Depends on Application, Core and DataAccess.
-
----
+Depends on Application and Core.
 
 ### Server
 
@@ -134,8 +122,6 @@ Contains:
 * Swagger
 * Authentication configuration
 
----
-
 ## Authentication
 
 JWT Bearer authentication.
@@ -145,18 +131,18 @@ Authentication flow:
 ```
 Client
     │
+    ▼
 POST /auth/login
     │
     ▼
-JWT Token
+Receive JWT Token
     │
+    ▼
 Authorization: Bearer <token>
     │
     ▼
 Protected Endpoints
 ```
-
----
 
 ## Authorization
 
@@ -176,8 +162,6 @@ Example:
 [HasPermission(Permission.CreatePosts)]
 ```
 
----
-
 ## Technologies
 
 * ASP.NET Core 10
@@ -187,8 +171,6 @@ Example:
 * Docker Compose
 * JWT
 * Swagger
-
----
 
 ## Running
 
@@ -200,17 +182,24 @@ cd jwt-auth-dotnet10-api
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-After startup, Swagger UI is available at:
+The API will be available at:
+
+```text
+http://localhost:8080
+```
+
+Swagger UI:
 
 ```text
 http://localhost:8080/swagger
 ```
 
----
-
 ## Configuration
 
 Configure the application using [appsettings.json](Server/appsettings.json) and [appsettings.Development.json](Server/appsettings.Development.json) for development.
+
+> [!NOTE]
+> Replace all placeholder values (such as `your-frontend.com` and `very-secret-key-...`) with your own configuration before running the application.
 
 Example:
 
@@ -253,7 +242,25 @@ Example:
 }
 ```
 
----
+> [!WARNING]
+> Never use the example JWT secret or development configuration in production. Always use strong secrets and environment-specific settings.
+
+## Docker
+
+The project includes two Docker Compose files:
+
+- **docker-compose.yml** – base configuration for running the application and its dependencies.
+- **docker-compose.dev.yml** – development overrides (for example, source code mounting, development environment variables, and hot reload).
+
+Run both files together during development:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+> [!TIP]
+> Review both Docker Compose files and update service names, ports, environment variables, and volume mappings to match your local environment before starting the application.
+```
 
 ## Goals
 
