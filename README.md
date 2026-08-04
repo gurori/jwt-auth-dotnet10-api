@@ -35,7 +35,7 @@
 ## Project Structure
 
 ```text
-src/
+/
 ├── Application/
 │   ├── Interfaces/
 │   ├── Models/
