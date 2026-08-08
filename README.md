@@ -1,8 +1,11 @@
 # ASP.NET Core 10 Web API Starter
 
-![.NET](https://img.shields.io/badge/.NET-10-blue)
+![CI](https://github.com/gurori/jwt-auth-dotnet10-api/actions/workflows/ci.yml/badge.svg)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-10-512BD4)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Docker](https://img.shields.io/badge/docker-ready-blue)
 
 > A starter template for building scalable ASP.NET Core 10 Web APIs using Clean Architecture, JWT authentication, role & permission-based authorization, Entity Framework Core, and PostgreSQL.
 
